@@ -59,13 +59,6 @@ function callApi() {
 }
 
 
-generateButton.addEventListener('click', function () {
-    
-callApi()
-    
-})
-
-
 
             
 
@@ -106,14 +99,24 @@ function getData() {
 
 
 
+
 generateButton.addEventListener('click', function () {
     
-// setInterval(() => {
+    callApi()
     JFCustomWidget.sendData(getData());
-// }, 500);
+
+    })
+    
+// generateButton.addEventListener('click', function () {
+    
+// // setInterval(() => {
+// // }, 500);
+
+// }
+// )
+
 
 }
-)}
 
 JFCustomWidget.subscribe("ready", function(data) {
 var widget = new myWidget();
