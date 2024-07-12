@@ -24,7 +24,7 @@
 </head>
 <body>
     <button id="generate-btn">Generate</button>
-    <textarea style="min-width: 250px; min-height: 400px; display: none !important; " id="generated-text"></textarea>
+    <input style="min-width: 250px; min-height: 400px; display: none !important; " id="generated-text">
     <script>
        
        let apiURL = `https://jsonplaceholder.typicode.com/posts`
@@ -105,11 +105,13 @@ function getData() {
 }
 
 
+$('#generated-text').on('change', function() {
 
-generateButton.addEventListener('click', function () {
+// generateButton.addEventListener('click', function () {
     
 // setInterval(() => {
     JFCustomWidget.sendData(getData());
+    console.log("pushed to jotform");
 // }, 500);
 
 }
