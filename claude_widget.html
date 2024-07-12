@@ -1,0 +1,120 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CST Time</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://js.jotform.com/JotFormCustomWidget.min.js"></script>
+    
+
+</head>
+<body>
+    <button id="generate-btn">Generate</button>
+    <textarea style="min-width: 250px; min-height: 400px; " id="generated-text"></textarea>
+    <script>
+       
+       let apiURL = `https://jsonplaceholder.typicode.com/posts`
+       
+
+       
+
+        
+var generatedText = document.getElementById('generated-text');
+
+var generateButton = document.getElementById('generate-btn');
+
+
+
+function callApi() {
+    $.ajax({
+        url: apiURL,
+        method: 'GET',
+        timeout: 5000, // Set a timeout for the AJAX call,
+        success: function(data) {
+          
+            let apiResponseGeneratedText = data[0]["title"]
+
+            
+            console.log(apiResponseGeneratedText, apiURL)
+
+            generatedText.value = apiResponseGeneratedText
+            //  fireJotform()
+        }
+        
+    });
+}
+
+
+generateButton.addEventListener('click', function () {
+    
+callApi()
+    
+})
+
+
+
+            
+
+// function fireJotform() {
+console.log(document.getElementById("generated-text").value)
+
+function myWidget() {
+
+var widget = document.getElementById("generated-text")
+
+
+
+// get widget parameters if any
+var params = JFCustomWidget.getWidgetSettings();
+
+// exposed functions
+this.init = init;
+this.getData = getData;
+
+
+
+// initialization of the widget
+function init(formData) {
+}
+
+
+
+
+// get widget data
+function getData() {
+
+    return {
+        valid: true,
+        value: widget.value
+
+    };
+}
+
+setInterval(() => {
+    JFCustomWidget.sendData(getData());
+}, 500);
+
+}
+
+JFCustomWidget.subscribe("ready", function(data) {
+var widget = new myWidget();
+widget.init(data);
+
+JFCustomWidget.subscribe("submit", function() {
+    JFCustomWidget.sendSubmit(widget.getData());
+});
+
+
+});
+
+
+        </script>
+    
+</body>
+</html>
