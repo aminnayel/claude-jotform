@@ -52,6 +52,8 @@ function callApi() {
             console.log(apiResponseGeneratedText, apiURL)
 
             generatedText.value = apiResponseGeneratedText
+            $('#generated-text').trigger("change")
+
             //  fireJotform()
         }
         
@@ -111,6 +113,7 @@ $('#generated-text').on('change', function() {
     
 // setInterval(() => {
     JFCustomWidget.sendData(getData());
+   
     console.log("pushed to jotform");
 // }, 500);
 
