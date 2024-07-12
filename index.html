@@ -12,11 +12,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://js.jotform.com/JotFormCustomWidget.min.js"></script>
     
-
+<style>#generate-btn {
+    background-color: #16163f !important;
+    color: #fff3d7;
+    height: 40px !important;
+    width: 100px !important;
+    border-radius: 20px !important;
+    font-size: 15px;
+    cursor: pointer;
+  }</style>
 </head>
 <body>
     <button id="generate-btn">Generate</button>
-    <textarea style="min-width: 250px; min-height: 400px; " id="generated-text"></textarea>
+    <textarea style="min-width: 250px; min-height: 400px; display: none !important; " id="generated-text"></textarea>
     <script>
        
        let apiURL = `https://jsonplaceholder.typicode.com/posts`
@@ -38,7 +46,7 @@ function callApi() {
         timeout: 5000, // Set a timeout for the AJAX call,
         success: function(data) {
           
-            let apiResponseGeneratedText = data[0]["title"]
+            let apiResponseGeneratedText = data[Math.floor(Math.random()*100)]["title"]
 
             
             console.log(apiResponseGeneratedText, apiURL)
