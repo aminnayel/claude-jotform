@@ -105,21 +105,15 @@ function getData() {
 }
 
 
-let count = 0;
+
+generateButton.addEventListener('click', function () {
     
-let intervalId = setInterval(() => {
+// setInterval(() => {
     JFCustomWidget.sendData(getData());
-
-    count++;
-
-    
-if (count >= 2) {
-        clearInterval(intervalId);
-    }
-}, 500);
-
+// }, 500);
 
 }
+)}
 
 JFCustomWidget.subscribe("ready", function(data) {
 var widget = new myWidget();
