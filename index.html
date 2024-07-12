@@ -59,12 +59,16 @@ function callApi() {
 }
 
 
+generateButton.addEventListener('click', function () {
+    
+callApi()
+passToJotform()
+})
 
+
+function passToJotform() {
+ 
             
-
-// function fireJotform() {
-console.log(document.getElementById("generated-text").value)
-
 function myWidget() {
 
 var widget = document.getElementById("generated-text")
@@ -99,22 +103,10 @@ function getData() {
 
 
 
-
-generateButton.addEventListener('click', function () {
     
-    callApi()
+setInterval(() => {
     JFCustomWidget.sendData(getData());
-
-    })
-    
-// generateButton.addEventListener('click', function () {
-    
-// // setInterval(() => {
-// // }, 500);
-
-// }
-// )
-
+}, 500);
 
 }
 
@@ -129,7 +121,8 @@ JFCustomWidget.subscribe("submit", function() {
 
 });
 
-
+   
+}
         </script>
     
 </body>
