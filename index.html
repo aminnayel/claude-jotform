@@ -104,11 +104,16 @@ function getData() {
     };
 }
 
+
+
+generateButton.addEventListener('click', function () {
+    
 // setInterval(() => {
     JFCustomWidget.sendData(getData());
 // }, 500);
 
 }
+)}
 
 JFCustomWidget.subscribe("ready", function(data) {
 var widget = new myWidget();
